@@ -1,9 +1,50 @@
 <app-navbar></app-navbar>
-<p>home works!</p>
-<!-- <app-cards></app-cards> -->
-<!-- <ng-container *ngFor="let brand of carsBrands">
-    <mat-card class="cards" (click)="getCarsByBrand(brand.id)">
-        {{ brand.name }}
-    </mat-card>
-</ng-container> -->
-
+<div class="home">
+	<div class="home__search">
+		<div class="home__search--title">
+			<h1>Consulta de carros na Tabela FIPE</h1>
+		</div>
+		<mat-card>
+			<mat-horizontal-stepper linear #stepper>
+				<mat-step [stepControl]="firstFormGroup">
+					<form [formGroup]="firstFormGroup">
+						<ng-template matStepLabel>Selecione a marca do veículo</ng-template>
+						<mat-form-field>
+							<mat-label>Marca</mat-label>
+							<input matInput formControlName="firstCtrl" placeholder="Last name, First name" required>
+						</mat-form-field>
+						<div>
+							<button mat-button matStepperNext>Próximo</button>
+						</div>
+					</form>
+				</mat-step>
+				<mat-step [stepControl]="secondFormGroup">
+					<form [formGroup]="secondFormGroup">
+						<ng-template matStepLabel>Selecione o modelo do veículo</ng-template>
+						<mat-form-field>
+							<mat-label>Modelo</mat-label>
+							<input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY" required>
+						</mat-form-field>
+						<div>
+							<button mat-button matStepperPrevious>Voltar</button>
+							<button mat-button matStepperNext>Próximo</button>
+						</div>
+					</form>
+				</mat-step>
+				<mat-step>
+					<form [formGroup]="thirdFormGroup">
+						<ng-template matStepLabel>Selecione o ano do modelo do veículo</ng-template>
+						<mat-form-field>
+							<mat-label>Ano do veículo</mat-label>
+							<input matInput formControlName="thirdCtrl" placeholder="Ex. 1 Main St, New York, NY" required>
+						</mat-form-field>
+						<div>
+							<button mat-button matStepperPrevious>Voltar</button>
+							<button mat-button matStepperNext>Pesquisar</button>
+						</div>
+					</form>
+				</mat-step>
+			</mat-horizontal-stepper>
+		</mat-card>
+	</div>
+</div>

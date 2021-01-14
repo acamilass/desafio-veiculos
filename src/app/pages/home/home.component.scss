@@ -1,5 +1,20 @@
-.cards {
-    width: 100px;
-    margin: 15px;
-    cursor: pointer;
+.home {
+	height: 85vh;
+    width: 100vw;
+	
+	display: flex;
+    justify-content: center;
+	align-items: flex-start;
+	
+	&__search {
+		width: 80vw;
+		margin-top: 50px;
+	}
+}
+.mat-stepper-horizontal {
+	margin-top: 8px;
+}
+
+.mat-form-field {
+	margin-top: 16px;
 }

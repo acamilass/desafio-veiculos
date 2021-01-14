@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { from } from 'rxjs';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { FipeCarsService } from 'src/app/services/fipe-cars.service';
 
 @Component({
@@ -10,11 +10,25 @@ import { FipeCarsService } from 'src/app/services/fipe-cars.service';
 export class HomeComponent implements OnInit {
 
   carsBrands: any;
+  isLinear = false;
+  firstFormGroup: FormGroup;
+  secondFormGroup: FormGroup;
+  thirdFormGroup: FormGroup;
 
-  constructor(private fipeCarsService: FipeCarsService) { }
+  constructor(private fipeCarsService: FipeCarsService, private _formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
     this.getCars();
+
+    this.firstFormGroup = this._formBuilder.group({
+      firstCtrl: ['']
+    });
+    this.secondFormGroup = this._formBuilder.group({
+      secondCtrl: ['']
+    });
+    this.thirdFormGroup = this._formBuilder.group({
+      thirdCtrl: ['']
+    });
   }
 
   getCars() {
@@ -33,5 +47,4 @@ export class HomeComponent implements OnInit {
       console.log(err);
     });
   }
-
 }
