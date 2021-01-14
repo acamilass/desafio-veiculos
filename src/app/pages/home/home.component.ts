@@ -60,7 +60,6 @@ export class HomeComponent implements OnInit {
   }
 
   getCarsByBrand(id: any) {
-    console.log(id);
     this.fipeCarsService.getCarsByBrand(id).subscribe((carsByBrand) => {
       this.carsByBrand = carsByBrand;
 
@@ -69,29 +68,23 @@ export class HomeComponent implements OnInit {
         startWith(''),
         map(value => this._filterCarsByBrand(value))
       );
-
-      console.log(carsByBrand);
     }, (error) => {
       console.error(error);
     });
   }
 
   getCarsModels(brandId: number, modelId: string) {
-    console.log(brandId, modelId);
     this.fipeCarsService.getCarsModels(brandId, modelId).subscribe((carsModels) => {
       this.carsModels = carsModels;
-      console.log(carsModels);
     }, (error) => {
       console.error(error);
-    })
+    });
   }
 
   getCarsModelsByYear(brandId: number, modelId: string, year: string) {
-    console.log(brandId, modelId, year);
     this.fipeCarsService.getCarsModelsByYear(brandId, modelId, year).subscribe((selectedCar) => {
       this.selectedCar = selectedCar;
       this.finalResult = true;
-      console.log(selectedCar);
     }, (error) => {
       console.error(error);
     });
