@@ -32,7 +32,7 @@
 							<input type="text" aria-label="Number" matInput [formControl]="carsByBrandControl"
 								[matAutocomplete]="auto">
 							<mat-autocomplete #auto="matAutocomplete">
-								<mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+								<mat-option *ngFor="let option of filteredOptions | async" [value]="option.id">
 									{{ option.fipe_name }}
 								</mat-option>
 							</mat-autocomplete>
@@ -58,7 +58,7 @@
 						</mat-form-field>
 						<div>
 							<button mat-raised-button matStepperPrevious>Voltar</button>
-							<button mat-raised-button matStepperNext (click)="getCarsModelsByYear(brandControl.value, carsByBrandControl.value, carsModelsControl.value)">Pesquisar</button>
+							<button mat-raised-button (click)="getCarsModelsByYear(brandControl.value, carsByBrandControl.value, carsModelsControl.value)">Pesquisar</button>
 						</div>
 					</form>
 				</mat-step>

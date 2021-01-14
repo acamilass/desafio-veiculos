@@ -78,8 +78,8 @@ export class HomeComponent implements OnInit {
 
   getCarsModels(brandId: number, modelId: string) {
     console.log(brandId, modelId);
-    this.fipeCarsService.getCarsModels(brandId, modelId).subscribe((res) => {
-      this.carsModels = res;
+    this.fipeCarsService.getCarsModels(brandId, modelId).subscribe((carsModels) => {
+      this.carsModels = carsModels;
 
       this.filteredOptions = this.carsModelsControl.valueChanges
       .pipe(
@@ -87,7 +87,7 @@ export class HomeComponent implements OnInit {
         map(value => this._filterCarsModels(value))
       );
 
-      console.log(res);
+      console.log(carsModels);
     }, (error) => {
       console.error(error);
     })
@@ -95,24 +95,24 @@ export class HomeComponent implements OnInit {
 
   getCarsModelsByYear(brandId: number, modelId: string, year: string) {
     console.log(brandId, modelId, year);
-    this.fipeCarsService.getCarsModelsByYear(brandId, modelId, year).subscribe((res) => {
-      this.selectedCar = res;
+    this.fipeCarsService.getCarsModelsByYear(brandId, modelId, year).subscribe((selectedCar) => {
+      this.selectedCar = selectedCar;
       this.finalResult = true;
-      console.log(res);
+      console.log(selectedCar);
     }, (error) => {
       console.error(error);
     });
   }
 
-  private _filterBrands(value: string): [] {
+  private _filterBrands(value: any): [] {
     return this.carsBrands.filter(option => option.name.toLowerCase().includes(value));
   }
 
-  private _filterCarsByBrand(value: string): [] {
+  private _filterCarsByBrand(value: any): [] {
     return this.carsByBrand.filter(option => option.name.toLowerCase().includes(value));
   }
 
-  private _filterCarsModels(value: string) {
+  private _filterCarsModels(value: any): [] {
     return this.carsModels.filter(option => option.name.toLowerCase().includes(value));
   }
 }
