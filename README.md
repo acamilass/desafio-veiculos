@@ -1,27 +1,36 @@
-# DesafioVeiculos
+# Teste Frontend Itaú - Comunidade de Veículos
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.0.
+O teste consiste em criar uma busca de veículos na [tabela Fipe](https://fipeapi.appspot.com/). Os requisitos do teste estão descritos no seguinte [link](https://github.com/brunagil/frontend-teste-veiculos).
 
-## Development server
+## Metodologia
+**Padrão:** Angular
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+**Frameworks:** Angular, Angular Material
 
-## Code scaffolding
+**Desenvolvedora:** Ana Camila Santos Sousa
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+**Método de Desenvolvimento:**  A estrutura do projeto foi criada com a ferramenta [angular-cli](https://github.com/angular/angular-cli). Para o front end foi utilizado o framework [Angular Material](https://material.angular.io/). Para hospedar a página na web foi usado o [Netlify Drop](https://app.netlify.com/drop).
 
-## Build
+## Link do projeto
+O projeto também foi hospedado na web usando o Netlify Drop para uma visualização mais rápida. 
+> 
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## Executando o projeto localmente
 
-## Running unit tests
+O projeto também pode ser clonado através do seu repositório e assim ser visualizado localmente.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+**Requisitos:** O Node estar instalado na máquina
 
-## Running end-to-end tests
+### Passos
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Através do terminal clone o projeto
+![primeiro-passo](first-step.png)
 
-## Further help
+Na pasta desafio-veiculos baixe os pacotes
+![segundo-passo](second-step.png)
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Para executar localmente use o seguinte comando
+![terceiro-passo](third-step.png)
+
+Agora você pode testar a sua aplicação através do endereço [http://localhost:4200](http://localhost:4200)
+
