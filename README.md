@@ -30,7 +30,7 @@ Na pasta desafio-veiculos baixe os pacotes
 ![segundo-passo](second-step.png)
 
 Para executar localmente use o seguinte comando
-![terceiro-passo](third-step.png);
+![terceiro-passo](third-step.png)
 
 Agora você pode testar a sua aplicação através do endereço [http://localhost:4200](http://localhost:4200)
 
