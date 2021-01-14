@@ -2,7 +2,7 @@
 <div class="home">
 	<div class="home__search">
 		<div class="home__search--title">
-			<h1>Consulta de carros na Tabela FIPE</h1>
+			<h1>Consulta de carros na Tabela Fipe</h1>
 		</div>
 		<mat-card>
 			<mat-horizontal-stepper linear #stepper>
@@ -43,7 +43,7 @@
 						</div>
 					</form>
 				</mat-step>
-				<mat-step>
+				<mat-step [stepControl]="thirdFormGroup">
 					<form [formGroup]="thirdFormGroup">
 						<ng-template matStepLabel>Selecione o ano do modelo do veículo</ng-template>
 						<mat-form-field>
@@ -51,18 +51,28 @@
 							<input type="text" aria-label="Number" matInput [formControl]="carsModelsControl"
 								[matAutocomplete]="auto">
 							<mat-autocomplete #auto="matAutocomplete">
-								<mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-									{{ option }}
+								<mat-option *ngFor="let option of carsModels | async" [value]="option">
+									{{ option.name }}
 								</mat-option>
 							</mat-autocomplete>
 						</mat-form-field>
 						<div>
 							<button mat-raised-button matStepperPrevious>Voltar</button>
-							<button mat-raised-button matStepperNext>Pesquisar</button>
+							<button mat-raised-button matStepperNext (click)="getCarsModelsByYear(brandControl.value, carsByBrandControl.value, carsModelsControl.value)">Pesquisar</button>
 						</div>
 					</form>
 				</mat-step>
 			</mat-horizontal-stepper>
+			
+			<mat-card *ngIf="finalResult">
+				<p>Mês de referência: {{ selectedCar.referencia }}</p>
+				<p>Código Fipe: {{ selectedCar.fipe_codigo }}</p>
+				<p>Marca: {{ selectedCar.marca }}</p>
+				<p>Modelo: {{ selectedCar.veiculo }}</p>
+				<p>Ano modelo: {{ selectedCar.ano_modelo }}</p>
+				<p>Combustível: {{ selectedCar.combustivel }}</p>
+				<p>Preço médio: {{ selectedCar.preco }}</p>
+			</mat-card>
 		</mat-card>
 	</div>
 </div>

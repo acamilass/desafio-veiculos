@@ -1,5 +1,4 @@
 .home {
-	height: 85vh;
     width: 100vw;
 	
 	display: flex;
@@ -9,6 +8,7 @@
 	&__search {
 		width: 80vw;
 		margin-top: 50px;
+		margin-bottom: 50px;
 	}
 }
 .mat-stepper-horizontal {

@@ -14,6 +14,9 @@ export class HomeComponent implements OnInit {
   carsBrands: any;
   carsByBrand: any;
   carsModels: any;
+  selectedCar: any;
+
+  finalResult: boolean = false;
 
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
@@ -91,7 +94,10 @@ export class HomeComponent implements OnInit {
   }
 
   getCarsModelsByYear(brandId: number, modelId: string, year: string) {
+    console.log(brandId, modelId, year);
     this.fipeCarsService.getCarsModelsByYear(brandId, modelId, year).subscribe((res) => {
+      this.selectedCar = res;
+      this.finalResult = true;
       console.log(res);
     }, (error) => {
       console.error(error);
