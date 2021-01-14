@@ -1,2 +1,8 @@
 <p>home works!</p>
-<app-cards></app-cards>
+<!-- <app-cards></app-cards> -->
+<ng-container *ngFor="let brand of carsBrands">
+    <mat-card class="cards" (click)="getCarsByBrand(brand.id)">
+        {{ brand.name }}
+    </mat-card>
+</ng-container>
+
