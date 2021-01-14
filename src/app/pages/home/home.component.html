@@ -20,7 +20,8 @@
 							</mat-autocomplete>
 						</mat-form-field>
 						<div>
-							<button mat-raised-button matStepperNext (click)="getCarsByBrand(brandControl.value)">Próximo</button>
+							<button mat-raised-button matStepperNext
+								(click)="getCarsByBrand(brandControl.value)">Próximo</button>
 						</div>
 					</form>
 				</mat-step>
@@ -39,7 +40,8 @@
 						</mat-form-field>
 						<div>
 							<button mat-raised-button matStepperPrevious>Voltar</button>
-							<button mat-raised-button matStepperNext (click)="getCarsModels(brandControl.value, carsByBrandControl.value)">Próximo</button>
+							<button mat-raised-button matStepperNext
+								(click)="getCarsModels(brandControl.value, carsByBrandControl.value)">Próximo</button>
 						</div>
 					</form>
 				</mat-step>
@@ -48,22 +50,21 @@
 						<ng-template matStepLabel>Selecione o ano do modelo do veículo</ng-template>
 						<mat-form-field>
 							<mat-label>Ano do veículo</mat-label>
-							<input type="text" aria-label="Number" matInput [formControl]="carsModelsControl"
-								[matAutocomplete]="auto">
-							<mat-autocomplete #auto="matAutocomplete">
-								<mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-									{{ option.name }}
+							<mat-select [formControl]="carsModelsControl">
+								<mat-option *ngFor="let option of carsModels" [value]="option.id">
+									{{option.name}}
 								</mat-option>
-							</mat-autocomplete>
+							</mat-select>
 						</mat-form-field>
 						<div>
 							<button mat-raised-button matStepperPrevious>Voltar</button>
-							<button mat-raised-button (click)="getCarsModelsByYear(brandControl.value, carsByBrandControl.value, carsModelsControl.value)">Pesquisar</button>
+							<button mat-raised-button
+								(click)="getCarsModelsByYear(brandControl.value, carsByBrandControl.value, carsModelsControl.value)">Pesquisar</button>
 						</div>
 					</form>
 				</mat-step>
 			</mat-horizontal-stepper>
-			
+
 			<mat-card *ngIf="finalResult">
 				<mat-list>
 					<mat-list-item>

@@ -80,13 +80,6 @@ export class HomeComponent implements OnInit {
     console.log(brandId, modelId);
     this.fipeCarsService.getCarsModels(brandId, modelId).subscribe((carsModels) => {
       this.carsModels = carsModels;
-
-      this.filteredOptions = this.carsModelsControl.valueChanges
-      .pipe(
-        startWith(''),
-        map(value => this._filterCarsModels(value))
-      );
-
       console.log(carsModels);
     }, (error) => {
       console.error(error);
@@ -110,9 +103,5 @@ export class HomeComponent implements OnInit {
 
   private _filterCarsByBrand(value: any): [] {
     return this.carsByBrand.filter(option => option.name.toLowerCase().includes(value));
-  }
-
-  private _filterCarsModels(value: any): [] {
-    return this.carsModels.filter(option => option.name.toLowerCase().includes(value));
   }
 }
