@@ -6,8 +6,8 @@
 		</div>
 		<mat-card>
 			<mat-horizontal-stepper linear #stepper>
-				<mat-step [stepControl]="firstFormGroup">
-					<form [formGroup]="firstFormGroup">
+				<mat-step>
+					<form>
 						<ng-template matStepLabel>Selecione a marca do veículo</ng-template>
 						<mat-form-field>
 							<mat-label>Marca</mat-label>
@@ -25,8 +25,8 @@
 						</div>
 					</form>
 				</mat-step>
-				<mat-step [stepControl]="secondFormGroup">
-					<form [formGroup]="secondFormGroup">
+				<mat-step>
+					<form>
 						<ng-template matStepLabel>Selecione o modelo do veículo</ng-template>
 						<mat-form-field>
 							<mat-label>Modelo</mat-label>
@@ -45,8 +45,8 @@
 						</div>
 					</form>
 				</mat-step>
-				<mat-step [stepControl]="thirdFormGroup">
-					<form [formGroup]="thirdFormGroup">
+				<mat-step>
+					<form>
 						<ng-template matStepLabel>Selecione o ano do modelo do veículo</ng-template>
 						<mat-form-field>
 							<mat-label>Ano do veículo</mat-label>

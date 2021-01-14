@@ -18,10 +18,6 @@ export class HomeComponent implements OnInit {
 
   finalResult: boolean = false;
 
-  firstFormGroup: FormGroup;
-  secondFormGroup: FormGroup;
-  thirdFormGroup: FormGroup;
-
   brandControl = new FormControl();
   carsByBrandControl = new FormControl();
   carsModelsControl = new FormControl();
@@ -32,17 +28,6 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCarsBrands();
-
-    this.firstFormGroup = this._formBuilder.group({
-      firstCtrl: ['']
-    });
-    this.secondFormGroup = this._formBuilder.group({
-      secondCtrl: ['']
-    });
-    this.thirdFormGroup = this._formBuilder.group({
-      thirdCtrl: ['']
-    });
-
   }
 
   getCarsBrands() {
