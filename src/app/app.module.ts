@@ -17,6 +17,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatStepperModule } from '@angular/material/stepper'; 
 import {MatInputModule} from '@angular/material/input';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatStepperModule,
     MatInputModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatAutocompleteModule
   ],
   providers: [
     FormBuilder
