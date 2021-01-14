@@ -22,3 +22,10 @@
 button {
 	margin-right: 10px;
 }
+
+.table {
+	&__title {
+		font-weight: bold;
+		margin-right: 10px;
+	}
+}
