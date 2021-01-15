@@ -7,9 +7,9 @@
 		<mat-card>
 			<mat-horizontal-stepper linear #stepper>
 				<mat-step>
-					<form>
+					<form class="home__search--form">
 						<ng-template matStepLabel>Selecione a marca do veículo</ng-template>
-						<mat-form-field>
+						<mat-form-field class="home__search--form-field">
 							<mat-label>Marca</mat-label>
 							<input type="text" matInput [formControl]="brandControl" [matAutocomplete]="auto">
 							<mat-autocomplete #auto="matAutocomplete">
@@ -29,9 +29,9 @@
 					</form>
 				</mat-step>
 				<mat-step>
-					<form>
+					<form class="home__search--form">
 						<ng-template matStepLabel>Selecione o modelo do veículo</ng-template>
-						<mat-form-field>
+						<mat-form-field class="home__search--form-field">
 							<mat-label>Modelo</mat-label>
 							<input type="text" matInput [formControl]="carsByBrandControl" [matAutocomplete]="auto">
 							<mat-autocomplete #auto="matAutocomplete">
@@ -44,16 +44,16 @@
 							</mat-autocomplete>
 						</mat-form-field>
 						<div>
-							<button mat-raised-button matStepperPrevious>Voltar</button>
+							<button class="home__search--btn" mat-raised-button matStepperPrevious>Voltar</button>
 							<button mat-raised-button matStepperNext
 								(click)="getCarsModels(valueSelected[0], valueSelected[1])">Próximo</button>
 						</div>
 					</form>
 				</mat-step>
 				<mat-step>
-					<form>
+					<form class="home__search--form">
 						<ng-template matStepLabel>Selecione o ano do modelo do veículo</ng-template>
-						<mat-form-field>
+						<mat-form-field class="home__search--form-field">
 							<mat-label>Ano do veículo</mat-label>
 							<mat-select [formControl]="carsModelsControl">
 								<mat-option *ngFor="let option of carsModels" [value]="option.id">
@@ -62,7 +62,7 @@
 							</mat-select>
 						</mat-form-field>
 						<div>
-							<button mat-raised-button matStepperPrevious>Voltar</button>
+							<button class="home__search--btn" mat-raised-button matStepperPrevious>Voltar</button>
 							<button mat-raised-button
 								(click)="getCarsModelsByYear(valueSelected[0], valueSelected[1], carsModelsControl.value)">Pesquisar</button>
 						</div>
