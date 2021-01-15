@@ -1,5 +1,5 @@
 .home {
-    width: 100vw;
+    width: 98vw;
 	
 	display: flex;
     justify-content: center;
@@ -9,18 +9,22 @@
 		width: 80vw;
 		margin-top: 50px;
 		margin-bottom: 50px;
+
+		&--form {
+			min-width: 150px;
+			max-width: 300px;
+			width: 100%;
+
+			&-field {
+				width: 100%;
+				margin-top: 16px;
+			}
+		}
+
+		&--btn {
+			margin-right: 10px;
+		}
 	}
-}
-.mat-stepper-horizontal {
-	margin-top: 8px;
-}
-
-.mat-form-field {
-	margin-top: 16px;
-}
-
-button {
-	margin-right: 10px;
 }
 
 .table {
@@ -28,4 +32,12 @@ button {
 		font-weight: bold;
 		margin-right: 10px;
 	}
+}
+
+::ng-deep .mat-step-header .mat-step-icon-selected {
+    background-color: #EC7000; 
+}
+
+::ng-deep .mat-step-header .mat-step-icon-state-edit {
+	background-color: #EC7000;
 }

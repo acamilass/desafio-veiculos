@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { FipeCarsService } from 'src/app/services/fipe-cars.service';
-import { map, startWith } from 'rxjs/operators';
+import { CommonService } from 'src/app/services/common/common.service';
+import { Car, CarsBrands, CarsByBrand, CarsModels } from 'src/app/interfaces/fipe-cars.interface';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-home',
@@ -11,12 +13,12 @@ import { map, startWith } from 'rxjs/operators';
 })
 export class HomeComponent implements OnInit {
 
-  carsBrands: any;
-  carsByBrand: any;
-  carsModels: any;
-  selectedCar: any;
+  carsModels: CarsModels;
+  selectedCar: Car;
 
   finalResult: boolean = false;
+
+  valueSelected: Array<any> = [];
 
   brandControl = new FormControl();
   carsByBrandControl = new FormControl();
@@ -24,62 +26,50 @@ export class HomeComponent implements OnInit {
 
   filteredOptions: Observable<[]>;
 
-  constructor(private fipeCarsService: FipeCarsService, private _formBuilder: FormBuilder) { }
+  constructor(private _fipeCarsService: FipeCarsService, 
+    private _commonService: CommonService) 
+  { }
 
   ngOnInit(): void {
     this.getCarsBrands();
   }
 
   getCarsBrands() {
-    this.fipeCarsService.getCarsBrands().subscribe((brands) => {
-      this.carsBrands = brands;
-      
-      this.filteredOptions = this.brandControl.valueChanges
-      .pipe(
-        startWith(''),
-        map(value => this._filterBrands(value))
-      );
-    }, (error) => {
+    this._fipeCarsService.getCarsBrands().subscribe((brands: CarsBrands) => {
+      this.filteredOptions = this._commonService
+        .watchValueChanges(this.brandControl, brands);
+    }, (error: HttpErrorResponse) => {
       console.error(error);
     });
   }
 
   getCarsByBrand(id: any) {
-    this.fipeCarsService.getCarsByBrand(id).subscribe((carsByBrand) => {
-      this.carsByBrand = carsByBrand;
-
-      this.filteredOptions = this.carsByBrandControl.valueChanges
-      .pipe(
-        startWith(''),
-        map(value => this._filterCarsByBrand(value))
-      );
-    }, (error) => {
+    this._fipeCarsService.getCarsByBrand(id).subscribe((carsByBrand: CarsByBrand) => {
+      this.filteredOptions = this._commonService
+        .watchValueChanges(this.carsByBrandControl, carsByBrand);
+    }, (error: HttpErrorResponse) => {
       console.error(error);
     });
   }
 
   getCarsModels(brandId: number, modelId: string) {
-    this.fipeCarsService.getCarsModels(brandId, modelId).subscribe((carsModels) => {
+    this._fipeCarsService.getCarsModels(brandId, modelId).subscribe((carsModels: CarsModels) => {
       this.carsModels = carsModels;
-    }, (error) => {
+    }, (error: HttpErrorResponse) => {
       console.error(error);
     });
   }
 
   getCarsModelsByYear(brandId: number, modelId: string, year: string) {
-    this.fipeCarsService.getCarsModelsByYear(brandId, modelId, year).subscribe((selectedCar) => {
+    this._fipeCarsService.getCarsModelsByYear(brandId, modelId, year).subscribe((selectedCar: Car) => {
       this.selectedCar = selectedCar;
       this.finalResult = true;
-    }, (error) => {
+    }, (error: HttpErrorResponse) => {
       console.error(error);
     });
   }
 
-  private _filterBrands(value: any): [] {
-    return this.carsBrands.filter(option => option.name.toLowerCase().includes(value));
-  }
-
-  private _filterCarsByBrand(value: any): [] {
-    return this.carsByBrand.filter(option => option.name.toLowerCase().includes(value));
+  getAutocompleteValue(value: any) {
+    this.valueSelected.push(value);
   }
 }
