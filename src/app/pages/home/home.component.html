@@ -11,17 +11,20 @@
 						<ng-template matStepLabel>Selecione a marca do veículo</ng-template>
 						<mat-form-field>
 							<mat-label>Marca</mat-label>
-							<input type="text" aria-label="Number" matInput [formControl]="brandControl"
-								[matAutocomplete]="auto">
+							<input type="text" matInput [formControl]="brandControl" [matAutocomplete]="auto">
 							<mat-autocomplete #auto="matAutocomplete">
-								<mat-option *ngFor="let option of filteredOptions | async" [value]="option.id">
+								<mat-option 
+									*ngFor="let option of filteredOptions | async" 
+									(click)="getAutocompleteValue(option.id)"
+									[value]="option.fipe_name"
+								>
 									{{ option.fipe_name }}
 								</mat-option>
 							</mat-autocomplete>
 						</mat-form-field>
 						<div>
 							<button mat-raised-button matStepperNext
-								(click)="getCarsByBrand(brandControl.value)">Próximo</button>
+								(click)="getCarsByBrand(valueSelected[0])">Próximo</button>
 						</div>
 					</form>
 				</mat-step>
@@ -30,10 +33,12 @@
 						<ng-template matStepLabel>Selecione o modelo do veículo</ng-template>
 						<mat-form-field>
 							<mat-label>Modelo</mat-label>
-							<input type="text" aria-label="Number" matInput [formControl]="carsByBrandControl"
-								[matAutocomplete]="auto">
+							<input type="text" matInput [formControl]="carsByBrandControl" [matAutocomplete]="auto">
 							<mat-autocomplete #auto="matAutocomplete">
-								<mat-option *ngFor="let option of filteredOptions | async" [value]="option.id">
+								<mat-option 
+									*ngFor="let option of filteredOptions | async" 
+									(click)="getAutocompleteValue(option.id)"
+									[value]="option.fipe_name">
 									{{ option.fipe_name }}
 								</mat-option>
 							</mat-autocomplete>
@@ -41,7 +46,7 @@
 						<div>
 							<button mat-raised-button matStepperPrevious>Voltar</button>
 							<button mat-raised-button matStepperNext
-								(click)="getCarsModels(brandControl.value, carsByBrandControl.value)">Próximo</button>
+								(click)="getCarsModels(valueSelected[0], valueSelected[1])">Próximo</button>
 						</div>
 					</form>
 				</mat-step>
@@ -59,7 +64,7 @@
 						<div>
 							<button mat-raised-button matStepperPrevious>Voltar</button>
 							<button mat-raised-button
-								(click)="getCarsModelsByYear(brandControl.value, carsByBrandControl.value, carsModelsControl.value)">Pesquisar</button>
+								(click)="getCarsModelsByYear(valueSelected[0], valueSelected[1], carsModelsControl.value)">Pesquisar</button>
 						</div>
 					</form>
 				</mat-step>

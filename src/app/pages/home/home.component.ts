@@ -18,6 +18,8 @@ export class HomeComponent implements OnInit {
 
   finalResult: boolean = false;
 
+  valueSelected: Array<any> = [];
+
   brandControl = new FormControl();
   carsByBrandControl = new FormControl();
   carsModelsControl = new FormControl();
@@ -41,7 +43,7 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  getCarsByBrand(id: number) {
+  getCarsByBrand(id: any) {
     this._fipeCarsService.getCarsByBrand(id).subscribe((carsByBrand: CarsByBrand) => {
       this.filteredOptions = this._commonService
         .watchValueChanges(this.carsByBrandControl, carsByBrand);
@@ -65,5 +67,9 @@ export class HomeComponent implements OnInit {
     }, (error: HttpErrorResponse) => {
       console.error(error);
     });
+  }
+
+  getAutocompleteValue(value: any) {
+    this.valueSelected.push(value);
   }
 }
