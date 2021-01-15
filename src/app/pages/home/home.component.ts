@@ -72,4 +72,20 @@ export class HomeComponent implements OnInit {
   getAutocompleteValue(value: any) {
     this.valueSelected.push(value);
   }
+
+  reset() {
+    this.getCarsBrands();
+    this.carsModels = null;
+    this.selectedCar = null;
+
+    this.finalResult = false;
+
+    this.valueSelected = [];
+
+    this.brandControl = new FormControl();
+    this.carsByBrandControl = new FormControl();
+    this.carsModelsControl = new FormControl();
+
+    this.filteredOptions = null;
+  }
 }

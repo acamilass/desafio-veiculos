@@ -72,6 +72,12 @@
 
 			<mat-card *ngIf="finalResult">
 				<app-table [selectedCar]="selectedCar"></app-table>
+				<div style="margin-top: 10px;display: flex;justify-content: center;">
+					<button 
+						mat-raised-button  
+						(click)="reset();stepper.reset();"
+					>Limpar pesquisa</button>
+				</div>
 			</mat-card>
 		</mat-card>
 	</div>
